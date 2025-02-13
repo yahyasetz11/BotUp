@@ -15,8 +15,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
-# Masukkan token bot dari Discord Developer Portal
-TOKEN = "MTMzOTM3MDkwMTI5NjEyMzkyNA.GTwi9T.JOiKEhaW6V3eFHjGRUWsP8hWE8PmYO-O65mdXM"
+import configparser
+
+# Baca config.ini
+config = configparser.ConfigParser()
+config.read("config.ini")
+
+# Ambil token dari config.ini
+TOKEN = config["DISCORD"]["TOKEN"]
 
 # Setup bot
 intents = discord.Intents.default()

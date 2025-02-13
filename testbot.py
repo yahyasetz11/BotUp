@@ -1,8 +1,13 @@
 import discord
 import os
+import configparser
 
-# Masukkan token bot dari Discord Developer Portal
-TOKEN = "MTMzOTM3MDkwMTI5NjEyMzkyNA.GTwi9T.JOiKEhaW6V3eFHjGRUWsP8hWE8PmYO-O65mdXM"
+# Baca config.ini
+config = configparser.ConfigParser()
+config.read("config.ini")
+
+# Ambil token dari config.ini
+TOKEN = config["DISCORD"]["TOKEN"]
 
 # Inisialisasi bot
 intents = discord.Intents.default()
