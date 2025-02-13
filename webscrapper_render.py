@@ -35,7 +35,7 @@ def sakamichi_scrape_and_translate(url, category):
 
     # Gunakan WebDriver Manager untuk otomatis download ChromeDriver
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(url, headers=headers)
 
