@@ -1,6 +1,7 @@
 import time
 import os
 import requests
+import shutil
 
 import discord
 import asyncio
