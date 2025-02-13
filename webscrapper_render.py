@@ -26,12 +26,14 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Fungsi untuk scraping gambar untuk sakamichi
 def sakamichi_scrape_and_translate(url, category):
-    # Setup WebDriver
+    chrome_path = shutil.which("chromium-browser")
+    print(f"Chromium binary found at: {chrome_path}")
+
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Menjalankan tanpa UI
-    chrome_options.add_argument("--no-sandbox")  # Diperlukan di cloud
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Diperlukan di cloud
-    chrome_options.binary_location = "/usr/bin/chromium-browser"  # Path ke binary Chromium
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.binary_location = chrome_path if chrome_path else "/usr/bin/chromium-browser"  # Ganti path jika perlu
 
     # Gunakan WebDriver Manager untuk otomatis download ChromeDriver
     service = Service(ChromeDriverManager().install())
